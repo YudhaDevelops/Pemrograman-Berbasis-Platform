@@ -2,9 +2,10 @@
   padding: 0px;
 }
 
-table, thead, tr, th, td {
+thead, th {
     border: 1px solid black;
   }
+
 
 th {
   padding-top: 5px;
@@ -13,17 +14,13 @@ th {
   padding-right: 3px;
 }
 
-.hari {
-  text-align: center;
-}
-
 td {
   text-align: center;
   padding-right: 3px;
   padding-left: 3px;
 }
 
-.judul{
+.center{
   text-align: center;
 }
 
@@ -33,4 +30,17 @@ td {
 
 .kedua {
   padding-top: 40px;
+}
+
+.logo{
+  height: 200px;
+}
+
+.list-matkul{
+  font-size: 20px;
+}
+
+.nama{
+  padding-top: 20px;
+  padding-left: 460px;
 }
