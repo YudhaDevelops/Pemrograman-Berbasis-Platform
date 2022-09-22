@@ -11,7 +11,7 @@
         var lagi = true;
         while(lagi){
             kata = prompt('Masukkan Kata :');
-            hasil = membalik(kata);
+            hasil = baru(kata);
 
             console.log('Hasilnya adalah : ' + hasil);
             lagi = confirm('Mau Lagi?');
@@ -25,6 +25,13 @@
                 kataBaru = kataBaru + kata[i];
             }
             return kataBaru;
+        }
+
+        function baru(kata) {
+            var data = kata.split("");
+            var balik = data.reverse();
+            var hasil = balik.join('');
+            return hasil;
         }
     </script>
     </body>

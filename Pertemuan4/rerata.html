@@ -12,16 +12,16 @@
         while(lagi){
             var jumlahAngka = parseInt(prompt('Masukkan jumlah angka yang ingin di cari rata ratanya :'));
             var data = [];
-            var tambah = 0;
+            var hasilTambah = 0;
             
             // mengimputkan data
             for (var i = 1; i <= jumlahAngka; i++) {
                 var angka = parseInt(prompt('Masukkan Angka ke-' + i +':'));
                 data.push(angka);
-                tambah = tambah + angka;
+                hasilTambah = hasilTambah + angka;
             }
 
-            var hasil = tambah / jumlahAngka;
+            var hasil = hasilTambah / jumlahAngka;
             console.log('Hasil nilai rata rata dari ' + 
                     '\n' + data.join(',') + ' adalah ' + hasil);
             lagi = confirm('Mau Lagi?');

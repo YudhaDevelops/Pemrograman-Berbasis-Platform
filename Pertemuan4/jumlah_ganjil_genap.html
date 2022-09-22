@@ -8,30 +8,42 @@
 </head>
 <body>
     <script>
-        var data = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30];
-        var dataGanjil = [], dataGenap = [];
+        var data = [] ;
         var hasilGanjil = 0, hasilGenap = 0;
-        for (var i = 0; i < data.length - 1; i++) {
+
+        var batasBawah = parseInt(prompt('Masukkan batas bawah : '));
+        var batasAtas = parseInt(prompt('Masukkan batas atas : '));
+        
+        if(batasBawah > batasAtas){
+            var temp = batasAtas;
+            batasAtas = batasBawah;
+            batasBawah = temp;
+        }
+
+        for(var i = batasBawah; i <= batasAtas; i++){
+            data.push(i);
+        }
+
+        for (var i = 0; i < data.length; i++) {
             if(data[i] % 2 == 0){
-                dataGenap.push(data[i]);
+                hasilGenap += 1;
             }else{
-                dataGanjil.push(data[i]);
+                hasilGanjil += 1;
             }
         }
 
-        for (let i = 0; i < dataGenap.length; i++) {
-            hasilGenap = hasilGenap + dataGenap[i];
-        }
-        for (let i = 0; i < dataGanjil.length; i++) {
-            hasilGanjil = hasilGanjil + dataGanjil[i];
-        }
-
+        var dataGenap = data.filter(function(e) {
+            return e % 2 == 0;
+        });
+        var dataGanjil = data.filter(function(e) {
+            return e % 2 == 1;
+        });
         console.log('Data Ganjil : ' + dataGanjil.join(','));
         console.log('Data Genap : ' + dataGenap.join(','));
 
-        console.log('\n');
-        console.log('Hasil dari penjumlahan semua data Genap : '+ hasilGenap);
-        console.log('Hasil dari Penjumlahan semua data Ganjil : ' + hasilGanjil);
+        // console.log('\n');
+        console.log('Hasil dari penjumlahan semua data Genap : '+ hasilGenap
+        + '\nHasil dari Penjumlahan semua data Ganjil : ' + hasilGanjil);
     </script>
 </body>
 </html>
