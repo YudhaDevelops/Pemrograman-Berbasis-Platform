@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rata Rata Nilai</title>
+</head>
+<body>
+    <script>
+        var lagi = true;
+        while(lagi){
+            var jumlahAngka = parseInt(prompt('Masukkan jumlah angka yang ingin di cari rata ratanya :'));
+            var data = [];
+            var tambah = 0;
+            
+            // mengimputkan data
+            for (var i = 1; i <= jumlahAngka; i++) {
+                var angka = parseInt(prompt('Masukkan Angka ke-' + i +':'));
+                data.push(angka);
+                tambah = tambah + angka;
+            }
+
+            var hasil = tambah / jumlahAngka;
+            console.log('Hasil nilai rata rata dari ' + 
+                    '\n' + data.join(',') + ' adalah ' + hasil);
+            lagi = confirm('Mau Lagi?');
+        }
+    </script>
+</body>
+</html>

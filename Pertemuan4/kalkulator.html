@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kalkulator JS</title>
+    </head>
+    <body>
+        <script>
+            lagi = true;
+            var angkaA,angkaB, hasil;
+
+            while(lagi){
+                angkaA = parseInt(prompt('Masukkan Nilai A :'));
+                angkaB = parseInt(prompt('Masukkan Nilai B :'));
+
+                var operasi = prompt('Masukkan Operasi :');
+                switch (operasi) {
+                    case '+':
+                        hasil = tambah(angkaA, angkaB);
+                        console.log('Hasil dari ' + angkaA + operasi + angkaB + ' hasilnya adalah : ' + hasil);
+                        break;
+                    case '-':
+                        hasil = kurang(angkaA, angkaB);
+                        console.log('Hasil dari ' + angkaA + operasi + angkaB + ' hasilnya adalah : ' + hasil);
+                        break;
+                    case '*':
+                        hasil = kali(angkaA, angkaB);
+                        console.log('Hasil dari ' + angkaA + operasi + angkaB + ' hasilnya adalah : ' + hasil);
+                        break;
+                    case '/':
+                        hasil = bagi(angkaA, angkaB);
+                        console.log('Hasil dari ' + angkaA + operasi + angkaB + ' hasilnya adalah : ' + hasil);
+                        break;
+                    case '%':
+                        hasil = modulo(angkaA, angkaB);
+                        console.log('Hasil dari ' + angkaA + operasi + angkaB + ' hasilnya adalah : ' + hasil);
+                        break;
+                    default:
+                        console.log('Inputan anda salah');
+                        break;
+                }
+                lagi = confirm('Mau Lagi?');
+            }
+
+
+            function tambah(a,b){
+                return a+b;
+            }
+            function kurang(a,b){
+                return a-b;
+            }
+            function kali(a,b){
+                return a*b;
+            }
+            function bagi(a,b){
+                return a/b;
+            }
+            function modulo(a,b){
+                return a%b;
+            }
+            alert('Terima kasih');
+        </script>
+    </body>
+</html>
