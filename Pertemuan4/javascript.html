@@ -121,14 +121,269 @@
         // }
         // console.log(s);
 
-        var s = '';
-        for (var i = 10; i > 0; i--) {
-            for (var j = 0; j < i; j++) {
-                s += '*';
+        // var s = '';
+        // for (var i = 10; i > 0; i--) {
+        //     for (var j = 0; j < i; j++) {
+        //         s += '*';
+        //     }
+        //     s += '\n';
+        // }
+        // console.log(s);
+
+        // buat game suit
+        // var tanya = true;
+        //     while(tanya){
+
+        //         // menangkap pilihan player
+        //         var p = prompt('Pilih : gajah, semut, orang');
+                
+        //         // menangkap pilihan computer
+        //         // membangkitkan bilangan random
+        //         var comp = Math.random();
+        //         if(comp < 0.34){
+        //             comp = 'gajah';
+        //         }else if(comp >= 0.34 && comp < 0.67){
+        //             comp = 'orang';
+        //         }else{
+        //             comp = 'semut';
+        //         }
+
+        //         var hasil = '';
+        //         // menentukan rules
+        //         if(p == comp){
+        //             hasil = 'Seri';
+        //         }else if(p == 'gajah'){
+        //         // if(comp == 'orang'){
+        //         //     hasil = 'Menang';
+        //         // }else{
+        //             //     hasil = 'Kalah';
+        //             // }
+        //             hasil = (comp == 'orang') ? 'Menang' : 'Kalah';
+        //         }else if(p == 'orang'){
+        //             if(comp == 'gajah'){
+        //                 hasil = "Kalah";
+        //             }else{
+        //                 hasil = 'Menang';
+        //             }
+        //         }else if(p == 'Semut'){
+        //             hasil = (comp == 'orang') ? 'Kalah' : 'Menang';
+        //         }else{
+        //             hasil = 'Memasukkan pilihan yang salah!';
+        //         }
+                
+        //         // tampilkan hasilnya
+        //         alert('Kamu memilih : ' + p + ' dan komputer memilih : ' + comp + '\nMaka hasilnya : kamu ' + hasil);
+        //         tanya = confirm('lagi?');
+        //     }
+        //     alert('Terima kasih');
+
+        // function
+        // function jumlahVolumeDuaKubus(a,b) {
+        //     // var a=8, b=3; 
+        //     var volumeA, volumeB, total;
+        //     volumeA = a * a *a;
+        //     volumeB = b * b * b;
+    
+        //     total = volumeA + volumeB;
+        //     return total;
+        // }
+
+        // data = jumlahVolumeDuaKubus(8,3);
+        // console.log(data);
+
+        // function tambah(a,b) {
+        //     return a+b;
+        // }
+        // var a = parseInt(prompt('Masukkan nilai 1:'));
+        // var b = parseInt(prompt('MAsukkan nilai 2:')); 
+        // // parseInt --> merubah string jadi int == java
+        // var hasil = tambah(a,b);
+        // console.log(hasil);
+
+        // array argument
+        // function tambah() {
+        //     var hasil =0;
+        //     for (var i = 0; i < arguments.length; i++) {
+        //         hasil += arguments[i];
+        //     }
+        //     return hasil;
+        // }
+        // var coba = tambah(2,34,5,6);
+        // console.log(coba);
+
+        // var a=1; //global scope / window scope
+        // function test() {
+        //     var b = 2; //private scope
+        // }
+        // test();
+
+        // foreach
+        // var angka = [1,2,3,4,5,6,7,8,9];
+        // angka.forEach(function(e) {
+        //     console.log(e);
+        // });
+
+        // map
+        // var angka = [1,2,3,4,5,6,7];
+        // angka.forEach(function(e) {
+        //     console.log(e);
+        // });
+        // var angka2 = angka.map(function(e) {
+        //     return e * 2;
+        // });
+        // console.log(angka2);
+
+        // sort
+        // var angka = [1,2,3,4,5,6,29,10];
+        // angka.sort(function(a,b) {
+        //     return a-b;
+        // });
+        // console.log(angka.join(','));
+
+        // splice
+        // var arr = ['sandika','galih','nofa'];
+        // splice(index awal, mau di hapus berapa, elemen baru 1, elemen baru 2, ...)
+        // arr.splice(2,0,'bambang');
+
+        // filter --> mengembalikan banyak nilai
+        // find --> mengembalikan satu nilai
+        // var angka = [1,2,3,4,5,6,29,10];
+        // var angka2 = angka.filter(function(e) {
+        //     // return e == 11;
+        //     return e > 5;
+        // }) 
+        // var angka3 = angka.find(function(e) {
+        //     // return e == 11;
+        //     return e > 5;
+        // }) 
+        // console.log(angka2.join(','));
+        // console.log(angka3);
+
+        // var penumpang = ['galih', 'sandika'];
+        // var tambahPenumpang = function(namaPenumpang, penumpang) {
+        //     // jika angkot kosong
+        //     if(penumpang.length == 0){
+        //         // tambah penumpang di awal Array
+        //         penumpang.push(namaPenumpang);
+        //         // kembalikan isi array dan keluar dari function
+        //         return penumpang;
+        //     }
+        //     // else
+        //     else{
+        //         // telusuri seluruh kursi dari awal
+        //         for (var i = 0; i < penumpang.length; i++) {
+        //             // jika ada kursi kosong
+        //             if (penumpang[i] == undefined) {
+        //                 // tambah penumpang di kursi tersebut
+        //                 penumpang[i] = namaPenumpang;
+        //                 // kembalikan isi array array dan kelur dari function 
+        //                 return penumpang;
+        //             // jika sudah ada nama yang sama
+        //             } else if(namaPenumpang == penumpang[i]){
+        //                 // tampilkan pesan kesalahannya
+        //                 console.log(namaPenumpang + ' sudah ada di dalam angkot');
+        //                 // kembalikan isi array dan keluar dari function
+        //                 return penumpang;
+        //             // jika seluruh kursi terisi
+        //             }else if(i == penumpang.length-1){
+        //                 // tambah penumpang di akhir array
+        //                 penumpang.push(namaPenumpang);
+        //                 // kembalikan isi array dan keluar dari function
+        //                 return penumpang;
+        //             }
+        //         }
+        //     }
+        // }
+
+        // var hapusPenumpang = function(namaPenumpang, penumpang) {
+        //     if (penumpang.length == 0) {
+        //         consle.log('Angkot masih kosong');
+        //         return penumpang;
+        //     }else{
+        //         for(var i = 0; i < penumpang.length; i ++){
+        //             if(penumpang[i] == namaPenumpang){
+        //                 penumpang[i] = undefined;
+        //                 return penumpang;
+        //             }else if(i == penumpang.length -1){
+        //                 console.log(namaPenumpang + ' tidak ada di dalam angkot');
+        //                 return penumpang;
+        //             }
+        //         }
+        //     }
+        // }
+
+        // object
+        // var mhs = {
+            // nama : "Yudha",
+            // umur : 20,
+            // ips : [3.54, 3.44, 3.57],
+            // alamat : {
+            //     jalan : "Jalan bala bala",
+            //     kota : "Lampung Utara",
+            //     provinsi : "Lampung",
+            // }
+        // };
+
+        // membuat object
+        // object literal
+        // var mhs = {
+        //     nama : "Yudha",
+        //     umur : 20,
+        //     ips : [3.54, 3.44, 3.57],
+        //     alamat : {
+        //         jalan : "Jalan bala bala",
+        //         kota : "Lampung Utara",
+        //         provinsi : "Lampung",
+        //     }
+        // };
+
+        // function buatObjectMhs(nama, umur){
+        //     var mhs = {};
+        //     mhs.nama = nama;
+        //     mhs.umur = umur;
+        //     return mhs;
+        // };
+
+        // var mhs4 = buatObjectMhs('Yudha',20);
+
+        // constructor
+        // sama aja pake new 
+
+        function angkot(sopir, trayek, penumpang, kas){
+            this.sopir = sopir;
+            this.trayek = trayek;
+            this.penumpang = penumpang;
+            this.kas = kas;
+
+            this.penumpangNaik = function(namaPenumpang){
+                this.penumpang.push(namaPenumpang);
+                return penumpang;
             }
-            s += '\n';
+
+            this.penumpangTurun = function(namaPenumpang,bayar){
+                if(this.penumpang.lenght == 0){
+                    console.log('Angkot masih kosong');
+                    return false;
+                }
+
+                for (var i = 0; i < this.penumpang.length; i++) {
+                    if (this.penumpang[i] == namaPenumpang) {
+                        this.penumpang[i] =undefined;
+                        this.kas += bayar;
+                        return this.penumpang;
+                    }
+                    
+                }
+            }
         }
-        console.log(s);
-    </script>
+
+        var angkot1 = new angkot('Yudha',['Yogyakarta','Lampung'],[],0);
+        var angkot2 = new angkot('Galih',['Lampung','Yogyakarta'],[],0);
+        
+
+        console.log(angkot2);
+        console.log(angkot1);
+
+        </script>
 </body>
 </html>
