@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM GANTI WARNA</title>
+    <style>
+        html, body{
+            height: 100%;
+        }
+        body{
+            text-align: center;
+        }
+
+        .biru-muda{
+            background-color: lightblue;
+        }
+
+        .kotak{
+            width: 25px;
+            height: 25px;
+            margin: 10px auto;
+        }
+        .merah{
+            background-color: red;
+        }
+
+        .hijau{
+            background-color: green;
+        }
+
+        .biru{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bermain Dengan Warna</h1>
+    <h1>205314020 | FX. Bima Yudha Pratama</h1>
+    
+    <button type="button" id="tombol_ubah_warna">Ubah Warna</button>
+    <br><br>
+
+    <div class="kotak merah"></div>
+    <input type="range" name="merah" min="0" max="255">
+
+    <div class="kotak hijau"></div>
+    <input type="range" name="hijau" min="0" max="255">
+
+    <div class="kotak biru"></div>
+    <input type="range" name="biru" min="0" max="255">
+
+    <script>
+        const btnGantiWarna = document.getElementById('tombol_ubah_warna');
+        btnGantiWarna.onclick = function(){
+            // alert('ok')
+            // ubah warna backgroud body nya sesuai keinginan
+            // document.body.style.backgroundColor = 'lightblue';
+
+            // panggil cssnya (nama atribute, nama css)
+            // document.body.setAttribute('class','biru-muda');
+
+            document.body.classList.toggle('biru-muda');
+        }
+        
+        // buat tombol baru dengan acak.
+        const tombol_acak_warna = document.createElement('button');
+        const textTombol = document.createTextNode('Acak Warna');
+        tombol_acak_warna.appendChild(textTombol);
+        tombol_acak_warna.setAttribute('type','button');
+        
+        btnGantiWarna.after(tombol_acak_warna);
+
+        tombol_acak_warna.addEventListener('click',function(){
+            const merah = Math.round(Math.random() * 255 + 1);
+            const hijau = Math.round(Math.random() * 255 + 1);
+            const biru = Math.round(Math.random() * 255 + 1);
+            document.body.style.backgroundColor = 'rgb('+ merah +','+ hijau +','+ biru +')';
+        });
+
+
+        // pakai input yang tipenya range / menjadi slider
+        const slider_merah = document.querySelector('input[name=merah]');
+        const slider_hijau = document.querySelector('input[name=hijau]');
+        const slider_biru = document.querySelector('input[name=biru]');
+
+        // slider_merah.addEventListener('change', function(){
+        //     alert('0k');
+        // });
+
+        slider_merah.addEventListener('input', function(){
+            const merah = slider_merah.value;
+            const hijau = slider_hijau.value;
+            const biru = slider_biru.value;
+            document.body.style.backgroundColor = 'rgb('+ merah +','+ hijau +','+ biru +')';
+        });
+
+        slider_hijau.addEventListener('input', function(){
+            const merah = slider_merah.value;
+            const hijau = slider_hijau.value;
+            const biru = slider_biru.value;
+            document.body.style.backgroundColor = 'rgb('+ merah +','+ hijau +','+ biru +')';
+        });
+        
+        slider_biru.addEventListener('input', function(){
+            const merah = slider_merah.value;
+            const hijau = slider_hijau.value;
+            const biru = slider_biru.value;
+            document.body.style.backgroundColor = 'rgb('+ merah +','+ hijau +','+ biru +')';
+        });
+
+        document.body.addEventListener('mousemove', function(event){
+            // posisi mouse
+            // const clientX = event.clientX;
+
+            // ukuran browser
+            // window.innerWidth;
+
+            const sumbuX = Math.round((event.clientX / window.innerWidth * 255));
+            const sumbuY = Math.round((event.clientY / window.innerHeight * 255));
+            const sumbuZ = Math.round(sumbuX /sumbuX);
+            document.body.style.backgroundColor = 'rgb('+sumbuX+','+sumbuY+',50)';
+        });
+    </script>
+</body>
+</html>

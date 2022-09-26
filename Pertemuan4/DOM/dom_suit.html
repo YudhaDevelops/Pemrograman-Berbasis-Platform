@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUIT JAWA</title>
+    <link rel="stylesheet" href="style_suit.css">
+</head>
+<body>
+    <h1>Suwit Jawa v2.0</h1>
+    <h1>205314020 | FX. Bima Yudha Pratama</h1>
+    <div class="container">
+        <div class="area-komputer">
+            <img src="img/gajah.png" class="img-komputer">
+        </div>
+        <div class="info"></div>
+        <div class="area-player">
+            <ul>
+                <li>
+                    <img src="img/gajah.png" class="gajah">
+                </li>
+                <li>
+                    <img src="img/orang.png" class="orang">
+                </li>
+                <li>
+                    <img src="img/semut.png" class="semut">
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function get_pilihan_komputer(){
+            const comp = Math.random();
+            if(comp < 0.34) return 'gajah';
+            if(comp >= 0.34 && comp < 0.67) return 'orang';
+            return 'semut';
+        }
+
+        function getHasil(comp, player){
+            // menentukan rules
+            if(player == comp) return 'Seri';
+            if(player == 'gajah') return (comp == 'orang') ? 'Menang' : 'Kalah';
+            if(player == 'orang') return (comp == 'gajah') ? 'Kalah' : 'Menang';
+            if(player == 'semut') return (comp == 'orang') ? 'Kalah' : 'Menang';    
+        }
+
+        const pilihan_gambar = document.querySelectorAll('li img');
+        pilihan_gambar.forEach(function(event){
+            event.addEventListener('click', function(){
+                const pilihan_computer = get_pilihan_komputer();
+                const pilihan_player = event.className;
+                const hasil = getHasil(pilihan_computer,pilihan_player);
+                
+                putar();
+                setTimeout(function(){
+                    const image_computer = document.querySelector('.img-komputer');
+                    image_computer.setAttribute('src','img/' +pilihan_computer + '.png');
+        
+                    const info = document.querySelector('.info');
+                    info.innerHTML = hasil;
+                },1000);
+
+            });
+        });
+
+        function putar(){
+            const img_computer = document.querySelector('.img-komputer');
+            const gambar = ['gajah','orang','semut'];
+            let i = 0;
+            const waktu_mulai = new Date().getTime();
+            setInterval(function(){
+                if (new Date().getTime()-waktu_mulai > 1000) {
+                    clearInterval;
+                    return
+                }
+
+                img_computer.setAttribute('src','img/'+gambar[i++]+'.png');
+                if(i == gambar.length) i = 0;
+            },100);
+        }
+
+        // const pilih_gajah = document.querySelector('.gajah');
+        // pilih_gajah.addEventListener('click',function(){
+        //     const pilihan_computer = get_pilihan_komputer();
+        //     const pilihan_player = pilih_gajah.className;
+        //     const hasil = getHasil(pilihan_computer,pilihan_player);
+            
+        //     const image_computer = document.querySelector('.img-komputer');
+        //     image_computer.setAttribute('src','img/' +pilihan_computer + '.png');
+
+        //     const info = document.querySelector('.info');
+        //     info.innerHTML = hasil;
+        // });
+
+        // const pilih_orang = document.querySelector('.orang');
+        // pilih_orang.addEventListener('click',function(){
+        //     const pilihan_computer = get_pilihan_komputer();
+        //     const pilihan_player = pilih_orang.className;
+        //     const hasil = getHasil(pilihan_computer,pilihan_player);
+            
+        //     const image_computer = document.querySelector('.img-komputer');
+        //     image_computer.setAttribute('src','img/' +pilihan_computer + '.png');
+
+        //     const info = document.querySelector('.info');
+        //     info.innerHTML = hasil;
+        // });
+
+        // const pilih_semut = document.querySelector('.semut');
+        // pilih_semut.addEventListener('click',function(){
+        //     const pilihan_computer = get_pilihan_komputer();
+        //     const pilihan_player = pilih_semut.className;
+        //     const hasil = getHasil(pilihan_computer,pilihan_player);
+            
+        //     const image_computer = document.querySelector('.img-komputer');
+        //     image_computer.setAttribute('src','img/' +pilihan_computer + '.png');
+
+        //     const info = document.querySelector('.info');
+        //     info.innerHTML = hasil;
+        // });
+
+    </script>
+</body>
+</html>
