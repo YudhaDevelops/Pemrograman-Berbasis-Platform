@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+    <style>
+        button {
+            padding: 10px 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <table border="2">
+        <thead>
+            <tr>
+                <th colspan="2">Kalkulator Tambah/Kurang</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <label for="bilangan1">Bilangan 1 :</label>
+                    <input type="text" id="bilangan1" onkeypress="cekAngka()">
+                </td>
+                <td>
+                    <label for="bilangan2">Bilangan 2 : </label>
+                    <input type="text" id="bilangan2" onkeypress="cekAngka()">
+                </td>
+            </tr>
+            <tr>
+                <td class="pilihan" colspan="2" >
+                    <label for="pilihan" id="pilihan">Tambah Atau Kurang?</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="tambah">Tambah</button>
+                </td>
+                <td>
+                    <button id="kurang">Kurang</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="hasil">Hasil : </label>
+                    <input type="text" name="hasil" id="hasil" value="">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script type="text/javascript">
+        function cekAngka() {
+            var bil1 = document.getElementById('bilangan1').value;
+            var bil2 = document.getElementById('bilangan2').value;
+
+            if (isNaN(bil1) || isNaN(bil2)) {
+                alert('Inputan Harus Berupa Angka');
+            }
+        }
+        const btn_tambah = document.getElementById('tambah');
+        const btn_kurang = document.getElementById('kurang');
+        
+        btn_tambah.addEventListener('click',function(){
+            var bil1 = document.getElementById('bilangan1').value;
+            var bil2 = document.getElementById('bilangan2').value;
+            var hasilTambah = parseInt(bil1) + parseInt(bil2);
+            const hasil = document.getElementById('hasil');
+            hasil.value = hasilTambah;
+        }); 
+
+        btn_kurang.addEventListener('click',function(){
+            var bil1 = document.getElementById('bilangan1').value;
+            var bil2 = document.getElementById('bilangan2').value;
+            var hasilKurang = parseInt(bil1) - parseInt(bil2);
+            const hasil = document.getElementById('hasil');
+            hasil.value = hasilKurang;
+        }); 
+        </script>
+</body>
+</html>
