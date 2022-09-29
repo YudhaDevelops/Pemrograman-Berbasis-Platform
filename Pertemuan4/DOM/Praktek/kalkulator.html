@@ -65,19 +65,13 @@
         const btn_kurang = document.getElementById('kurang');
         
         btn_tambah.addEventListener('click',function(){
-            var bil1 = document.getElementById('bilangan1').value;
-            var bil2 = document.getElementById('bilangan2').value;
-            var hasilTambah = parseInt(bil1) + parseInt(bil2);
             const hasil = document.getElementById('hasil');
-            hasil.value = hasilTambah;
+            hasil.value = parseInt(document.getElementById('bilangan1').value) + parseInt(document.getElementById('bilangan2').value);
         }); 
 
         btn_kurang.addEventListener('click',function(){
-            var bil1 = document.getElementById('bilangan1').value;
-            var bil2 = document.getElementById('bilangan2').value;
-            var hasilKurang = parseInt(bil1) - parseInt(bil2);
             const hasil = document.getElementById('hasil');
-            hasil.value = hasilKurang;
+            hasil.value = parseInt(document.getElementById('bilangan1').value) - parseInt(document.getElementById('bilangan2').value);
         }); 
         </script>
 </body>
