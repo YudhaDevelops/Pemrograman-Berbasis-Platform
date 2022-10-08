@@ -4,7 +4,7 @@ $nim = $_POST["nim"];
 $nama = $_POST["nama"];
 $status = $_POST["status"];
 
-$pesan = "Mahasiswa dengan nama ".$nama." NIM ".$nama ." berhasil menyelesaikan studi S1 dengan predikat ". $status;
+$pesan = "Mahasiswa dengan nama ".$nama." NIM ".$nim ." berhasil menyelesaikan studi S1 dengan predikat ". $status;
 
 ?>
 
