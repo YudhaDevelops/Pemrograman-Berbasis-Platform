@@ -43,7 +43,7 @@
                                     </td>
                                 </tr>
                                 <tr colspan='2'>
-                                    <button class='btn btn-outline-danger' id='hapus_cookie'>Hapus Coockie</button>
+                                <a href='./delCookie.php' class='btn btn-outline-danger' type='button' id='hapus_cookie'>Hapus Coockie</a>
                                 </tr>
                             </table>
                         </div>
