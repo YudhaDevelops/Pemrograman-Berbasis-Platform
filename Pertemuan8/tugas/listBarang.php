@@ -42,12 +42,12 @@ if (!isset($_SESSION['user'])) {
             }
         }    
     }
-    if ($masuk == null) {
-        $_SESSION['msg']="Invalid Username or Password";
-        header("Location:loginFailed.php");
-    }else{
-        $_SESSION['user'] = $masuk;
-    }
+}
+if ($masuk == null) {
+    $_SESSION['msg']="Invalid Username or Password";
+    header("Location:loginFailed.php");
+}else{
+    $_SESSION['user'] = $masuk;
 }
 
 $makanMinum = ['Gula', 'Teh','Kopi','Susu', 'Biskuit'];
