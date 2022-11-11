@@ -1,39 +1,5 @@
 <?php 
-    // if (isset($_POST['kode'])) {
-    //     $kode_barang = $_POST['kode'];
-    // }else{
-    //     $kode_barang = null;
-    // }
-
-    // if (isset($_POST['nama_barang'])) {
-    //     $nama_barang = $_POST['nama_barang'];
-    // }else{
-    //     $nama_barang = null;
-    // }
-    
-    // if (isset($_POST['jenis_barang'])) {
-    //     $jenis_barang = $_POST['jenis_barang'];
-    // }else{
-    //     $jenis_barang = null;
-    // }
-
-    // if (isset($_POST['lokasi'])) {
-    //     $lokasi = $_POST['lokasi'];
-    // }else{
-    //     $lokasi = null;
-    // }
-
-    // if (isset($_POST['harga_satuan'])) {
-    //     $harga = $_POST['harga_satuan'];
-    // }else{
-    //     $harga = null;
-    // }
-
-    // if (isset($_POST['jumlah_stok'])) {
-    //     $jumlah_stok = $_POST['jumlah_stok'];
-    // }else{
-    //     $jumlah_stok = null;
-    // }
+session_start();
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -42,22 +8,6 @@
     $con = new mysqli($servername,$username,$password,$dbname);
     $sql = "SELECT * FROM stok_barang";
     $result = $con->query($sql);
-
-    // if ($con->connect_error) {
-        // $_SESSION['msg']="Gagal Menyimpan".$con->connect_error;
-        // header("Location:index.php");
-    // }else{
-    //     if (isset($_SESSION['kirim']) && $_SESSION['kirim'] == "baru") {
-    //         $sql = "INSERT INTO stok_barang (kode,nama,jenis,lokasi,harga,jumlah) VALUES ('$kode_barang','$nama_barang','$jenis_barang','$lokasi','$harga','$jumlah_stok')";
-    //     }else{
-    //     }
-
-    //     if ($con->query($sql) === TRUE) {
-    //         $_SESSION['msg']="Sukses";
-    //     }else{
-    //         $_SESSION['msg']="Error" . $con->error;
-    //     }
-    // }
     mysqli_close($con);
 ?>
 <!DOCTYPE html>
@@ -84,7 +34,7 @@
                     <?php if(isset($_SESSION['msg'])) { ?>
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <?= $_SESSION['msg']; ?>
-                            <button type="button" class="btn-close" data-bs-dismis="alert" aria-label="close" onclick=""></button>
+                            <button type="button" class="btn-close" data-bs-dismis="alert" aria-label="close"></button>
                             <?php session_destroy() ?>
                         </div>
                     <?php } ?>
@@ -116,6 +66,9 @@
                             <?php } ?>
                         </tbody>
                     </table>
+                    <div class="col-12 text-center">
+                        <a href="./index.php" class="btn btn-outline-primary">Kembali</a>
+                    </div>
                 </div>
             </div>
 
