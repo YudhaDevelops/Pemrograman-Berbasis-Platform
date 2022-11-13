@@ -9,7 +9,9 @@ function getConnect()
     $con = new mysqli($servername,$username,$password,$dbname);
     return $con;
 }
+
 $con = getConnect();
+
 if ($con->connect_error) {
     $_SESSION['msg']="Gagal Menghubungkan".$con->connect_error;
     mysqli_close($con);
@@ -17,6 +19,7 @@ if ($con->connect_error) {
 }else{
     $sql = "SELECT * FROM stok_barang;";
     $data = $con->query($sql);
+    mysqli_close($con);
 }
 
 session_start();
@@ -29,6 +32,7 @@ if (isset($_SESSION['data']) && $_SESSION['data'] != null) {
     $jumlah = $_SESSION['data']["jumlah"];
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -106,8 +110,8 @@ if (isset($_SESSION['data']) && $_SESSION['data'] != null) {
                                     <label for="jenis_barang1" class="form-check-label">Makanan</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" id="jenis_barang2" value="Non" name="jenis_barang" type="radio" required
-                                    <?php if(isset($jenis) && $jenis != null && $jenis == "Non"){ ?>
+                                    <input class="form-check-input" id="jenis_barang2" value="Non Makanan" name="jenis_barang" type="radio" required
+                                    <?php if(isset($jenis) && $jenis != null && $jenis == "Non Makanan"){ ?>
                                         checked
                                     <?php } ?>
                                     >
@@ -188,7 +192,7 @@ if (isset($_SESSION['data']) && $_SESSION['data'] != null) {
                 <div class="col-md-12 text-center pt-4">
                     <input type="submit" class="btn btn-outline-primary" name="baru" value="Simpan">
                     <input type="submit" class="btn btn-outline-secondary" name="update" value="Update">
-                    <input type="submit" class="btn btn-outline-danger" name="hapus" value="Hapus">
+                    <input type="submit" class="btn btn-outline-danger" name="hapus" onclick="return confirm('Apakah Anda Yakin Menghapus Data Ini?');" value="Hapus">
                     <button type="button" class="btn btn-outline-info" data-bs-toggle="modal"
                         data-bs-target="#Cari">Cari</button>
                 </div>

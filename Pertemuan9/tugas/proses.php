@@ -36,7 +36,6 @@ session_start();
         $jumlah_stok = null;
     }
 
-    $con = new mysqli();
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($kode_barang == null || $nama_barang == null || $jenis_barang == null || $lokasi == null || $harga == null || $jumlah_stok == null) {
             $_SESSION['msg']="Harap Data Di Isi Semua";
@@ -46,32 +45,39 @@ session_start();
         $con = getConnect();
         if ($con->connect_error) {
             $_SESSION['msg']="Gagal Menghubungkan".$con->connect_error;
+            mysqli_close($con);
             header("Location:index.php");
         }
 
         if (isset($_POST["baru"])) {
             try {
-                $sql = "INSERT INTO stok_barang (kode,nama,jenis,lokasi,harga,jumlah) VALUES ('$kode_barang','$nama_barang','$jenis_barang','$lokasi','$harga','$jumlah_stok')";
+                $sql = "INSERT INTO stok_barang (kode,nama,jenis,lokasi,harga,jumlah) 
+                        VALUES ('$kode_barang','$nama_barang','$jenis_barang','$lokasi','$harga','$jumlah_stok')";
                 $data = $con->query($sql);
                 if ($data) {
                     $_SESSION['msg']="Data Berhasil Dimasukkan";
+                    mysqli_close($con);
                     header("Location:table.php");
                 }
             } catch (Exception $e) {
                 $_SESSION['msg'] = "Error: Id yang baru dah ada di database pak";
+                mysqli_close($con);
                 header("Location:index.php");
             }
         } 
         else if(isset($_POST["update"])){
             try {
-                $sql = "UPDATE stok_barang SET nama = '$nama_barang', jenis = '$jenis_barang', lokasi = '$lokasi' , harga = '$harga', jumlah = '$jumlah_stok' WHERE kode = '$kode_barang';";
+                $sql = "UPDATE stok_barang SET nama = '$nama_barang', jenis = '$jenis_barang', lokasi = '$lokasi' , harga = '$harga', jumlah = '$jumlah_stok' 
+                        WHERE kode = '$kode_barang';";
                 $data = $con->query($sql);
                 if ($data) {
                     $_SESSION['msg'] = "Data Berhasil DIupdate";
+                    mysqli_close($con);
                     header("Location:table.php");
                 }
             } catch (Exception $th) {
-                $_SESSION['msg'] = "Error: " . $sql . "<br>" . $conn->error;;
+                $_SESSION['msg'] = "Error: " . $sql . "<br>" . $conn->error;
+                mysqli_close($con);
                 header("Location:index.php");
             }
         }
@@ -81,35 +87,29 @@ session_start();
             $data = $con->query($sql);
             if ($data) {
                 $_SESSION['msg'] = "Data Berhasil Dihapus";
+                mysqli_close($con);
                 header("Location:table.php");
             }else{
-                $_SESSION['msg'] = "Error: " . $sql . "<br>" . $conn->error;;
+                $_SESSION['msg'] = "Error: " . $sql . "<br>" . $conn->error;
+                mysqli_close($con);
                 header("Location:index.php");
             }
         }else{
-            $con = getConnect();
-            if ($con->connect_error) {
-                $_SESSION['msg']="Gagal Menghubungkan".$con->connect_error;
+            $cari = $_POST['cari_data'];
+            $sql = "SELECT * FROM stok_barang WHERE kode = '$cari';";
+            $data = $con->query($sql)-> fetch_assoc();
+            if ($data) {
+                $_SESSION['msg']="Data Ditemukan";
+                $_SESSION['data']= $data;
                 mysqli_close($con);
                 header("Location:index.php");
             }else{
-                $cari = $_POST['cari_data'];
-                $sql = "SELECT * FROM stok_barang WHERE kode = '$cari';";
-                $data = $con->query($sql)-> fetch_assoc();
-                if ($data) {
-                    $_SESSION['msg']="Data Ditemukan";
-                    $_SESSION['data']= $data;
-                    mysqli_close($con);
-                    header("Location:index.php");
-                }else{
-                    $_SESSION['msg'] = "Data Tidak Ditemukan";
-                    mysqli_close($con);
-                    header("Location:index.php");
-                }
+                $_SESSION['msg'] = "Data Tidak Ditemukan";
+                mysqli_close($con);
+                header("Location:index.php");
             }
         }
     }else{
-        mysqli_close($con);
         header("Location:table.php");
     }
 
