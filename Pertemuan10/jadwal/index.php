@@ -11,10 +11,10 @@ function getConnect()
     return $con;
 }
 
-if (isset($_SESSION["user"])) {
-    $_SESSION['msg'] = "Selamat Datang Kembali";
-    header("Location:jadwal.php");
-}
+// if (isset($_SESSION["user"])) {
+//     $_SESSION['msg'] = "Selamat Datang Kembali";
+//     header("Location:jadwal.php");
+// }
 ?>
 
 <!DOCTYPE html>
